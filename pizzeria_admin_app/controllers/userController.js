@@ -3,7 +3,7 @@ import db from "../models/models";
 import jwt from "jsonwebtoken";
 
 // Déclaration de la variable User
-const User = db.users;
+const User = db.User;
 
 /**
  * Inscription de l'utlisateur
@@ -25,12 +25,12 @@ const signup = async (req, res) => {
     /**
      * Si les détails de l'utilisateur sont capturées
      * on génére un jeton d'authenfication de l'id de l'utilisateur et la clé secrete dans le fichier .env
-     * et on ajoute le jeton générée dans le cookie (PS: ceci n'est pas une bonne pratique en matière de sécurité des jetons
+     * et on ajoute le jeton généré dans le cookie (PS: ceci n'est pas une bonne pratique en matière de sécurité des jetons
      * mais pour le projet NodeJS nous nous suffirons à cette méthode d'authentification. Cela permet de garder l'utilisateur
-     * connectée à sa session sur pizzeria-admin-app  même si il change de page ou s'il supprime sa page en cours
+     * connectée à sa session sur pizzeria-admin-app  même si il quitte la page en cours
      */
     if (user) {
-      let token = jwt.sign({ id: user.id }, process.env.secretKey, {
+      let token = jwt.sign({ id: user.user_id }, process.env.secretKey, {
         expiresIn: 1 * 24 * 60 * 60 * 1000,
       });
       res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
@@ -70,7 +70,7 @@ const login = async (req, res) => {
       // On génère un jeton d'authentification avec l'id de l'utilisateur et la clé secrete du fichier .env
 
       if (isSame) {
-        let token = jwt.sign({ id: user.id }, process.env.secretKey, {
+        let token = jwt.sign({ id: user.user_id }, process.env.secretKey, {
           expiresIn: 1 * 24 * 60 * 60 * 1000,
         });
 

@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 export default (sequelize, DataTypes) => {
   const Client = sequelize.define("client", {
-    id: {
+    client_id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,

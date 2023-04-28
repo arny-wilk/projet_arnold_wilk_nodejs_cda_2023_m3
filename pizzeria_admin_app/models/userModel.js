@@ -5,13 +5,13 @@ export default (sequelize, DataTypes) => {
   const User = sequelize.define(
     "user",
     {
-      id: {
+      user_id: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      userName: {
+      user_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },

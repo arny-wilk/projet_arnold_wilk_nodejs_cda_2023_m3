@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
 export default (sequelize, DataTypes) => {
-  const Recipe = sequelize.define("recipe");
-  return Recipe;
+  const ClientDrinks = sequelize.define("client_drinks");
+  return ClientDrinks;
 };

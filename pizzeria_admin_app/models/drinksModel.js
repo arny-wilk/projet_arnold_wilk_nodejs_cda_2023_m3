@@ -1,14 +1,14 @@
 import { DataTypes } from "sequelize";
 
 export default (sequelize, DataTypes) => {
-  const Pizza = sequelize.define("pizza", {
-    pizza_id: {
+  const Drinks = sequelize.define("drinks", {
+    drink_id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    pizza_name: {
+    drink_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -17,5 +17,5 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  return Pizza;
+  return Drinks;
 };

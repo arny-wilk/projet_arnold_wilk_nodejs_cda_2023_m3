@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 
 export default (sequelize, DataTypes) => {
   const Ingredients = sequelize.define("ingredients", {
-    id: {
+    ingredient_id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,
