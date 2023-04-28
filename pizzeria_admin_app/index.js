@@ -1,42 +1,39 @@
 // server/index.js
+import cookieParser from "cookie-parser";
 import express from "express";
+import db from "./models/models";
+import router from "./routes/routes";
 
 /**
- * Initialisation de express js et démarrage du web server sur le port:3001
+ * Port d'écoute 3001
+ */
+const PORT = 3001;
+
+/**
+ * Initialisation de express js et démarrage du web server
  */
 const app = express();
 
-const PORT = 3001;
-
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
-
 /**
- * Configuration de pug
- */
-app.set("views", "./views");
-app.set("view engine", "pug");
-
-/**
- * Configuration du routage des fichiers statiques
- */
-app.use("/public", express.static("public"));
-
-/**
- * méthode json et urlencode pour le parsing des données envoyées/reçues
+ * Middlewares
  */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 /**
- * Redirection de la page d'accueil vers users/list
+* Synchronisation de la db avec force=false pour ne pas perdre les données à chaque relance du serveur
  */
-app.get("/", (req, res) => {
-  res.render("login");
-  res.redirect("users/list");
-});
+db.sequelize.sync({force: false}).then(() => { console.log(`db has been re sync`);})
 
-app.get("users/list", (req, res) => {
-  res.render("users");
+/**
+* routes de l'application vers les pages et les API routes
+ */
+app.use('/users/list', router)
+
+/**
+ * ecoute de la connection du serveur sur le port 3001
+ */
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });
