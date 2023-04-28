@@ -28,13 +28,22 @@ trash
 .trashes
 *~
 
+# binaries
+bin/
+dist/
+lib/
+
 # Gatsby related
 .cache/
 public
 
+# Vite Preact related
+vite.config.js
+
 # Editor
 .vscode
 .vscode-test
+*.swp
 *.sublime-project
 *.sublime-workspace
 sftp-config.json
