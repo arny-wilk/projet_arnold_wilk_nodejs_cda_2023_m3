@@ -18,9 +18,15 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 /**
-* connecting to model
+* connecting to models
  */
 db.users = require('./userModel')(sequelize, DataTypes)
+db.pizza = require('./pizzaModel')(sequelize, DataTypes)
+db.ingredient = require('./ingredientModel')(sequelize, DataTypes)
+db.command = require('./commandModel')(sequelize, DataTypes)
+db.client = require('./clientModel')(sequelize, DataTypes)
+db.orderboy = require('./orderboyModel')(sequelize, DataTypes)
+
 
 /**
 * exporting module

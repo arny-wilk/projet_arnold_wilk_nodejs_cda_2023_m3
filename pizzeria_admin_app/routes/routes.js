@@ -19,14 +19,15 @@ router.set("view engine", "pug");
 router.use("/public", express.static("public"));
 
 /**
- * Redirection de la page d'accueil vers /users/list
+ * Redirection de la page d'accueil vers la page de login
  */
-router.get("/", (req, res) => {
+router.get("/", res => {
   res.redirect("/login");
 });
 
 router.get("/signup", (req, res) => {
   // code pour faire le rendu de la page d'inscription
+  res.render("signup", {})
 });
 
 /**
@@ -40,6 +41,7 @@ router.post("/signup", userAuth.saveUser, signup, res => {
 
 router.get("/login", (req, res) => {
   // code pour faire le rendu de la page de login
+  res.render("login", {});
 });
 
 /**
@@ -47,7 +49,7 @@ router.get("/login", (req, res) => {
 * On attache le middleware d'authentification de l'utilisateur et on fait une redirection vers 
 * la page /users/list
  */
-router.post("/login", login, (res, req) => {
+router.post("/login", login, res => {
   res.redirect("/users/list");
 });
 
