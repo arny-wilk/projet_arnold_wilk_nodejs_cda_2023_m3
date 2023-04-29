@@ -45,18 +45,33 @@ db.CreditCard = require("./creditCard")(sequelize, DataTypes);
 /**
  * Mise en application des relations entre les models
  */
-db.Order.hasMany(db.Pizza, ForeignKey());
-db.Pizza.hasMany(db.Order, ForeignKey());
 
-// TRES IMPORTANT POUR LA RELATION MANY TO MANY
-// ENTRE LA TABLE  PIZZA ET INGREDIENT EN UTILISANT
-// LA TABLE  DE JOINTURE RECIPE
+// ONE TO MANY ASSOCIATIONS
+db.Client.hasMany(db.CreditCard, { through: db.ClientCreditCard });
+db.CreditCard.belongsTo(db.Client, { through: db.ClientCreditCard });
+
+db.Client.hasMany(db.Order, { through: db.ClientOrderPref });
+db.Order.belongsTo(db.Client, { through: db.ClientOrderPref });
+
+// SUPER MANY TO MANY
+db.Order.hasMany(db.Client, { foreignKey: "client_id" });
+db.Order.hasMany(db.CreditCard, { foreignKey: "cc_id" });
+
+// MANY TO MANY ASSOCIATION
+db.Order.belongsToMany(db.Pizza, { through: db.ClientPizza });
+db.Pizza.belongsToMany(db.Order, { through: db.ClientPizza });
+
+db.Order.belongsToMany(db.Drinks, { through: db.ClientDrinks });
+db.Drinks.belongsToMany(db.Order, { through: db.ClientDrinks });
+
+db.Order.belongsToMany(db.Dessert, { through: db.ClientDessert });
+db.Dessert.belongsToMany(db.Order, { through: db.ClientDessert });
+
 db.Ingredient.belongsToMany(db.Pizza, { through: db.Recipe });
+db.Pizza.belongsToMany(db.Ingredient, { through: db.Recipe });
 
-db.Client.hasMany(db.Command, ForeignKey());
-db.Command.hasMany(db.Client, ForeignKey());
-
-
+db.Pizza.hasMany(db.Size, { foreignKey: 'size_id'})
+db.Size.belongsTo(db.Pizza, { foreignKey: 'pizza_id'})
 
 /**
  * exporting module

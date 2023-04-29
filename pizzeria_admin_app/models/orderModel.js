@@ -10,6 +10,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
+      total_price: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+      },
     },
     { timestamps: true }
   );
