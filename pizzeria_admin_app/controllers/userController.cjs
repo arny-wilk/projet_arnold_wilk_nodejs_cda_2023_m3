@@ -1,9 +1,9 @@
-import bcrypt from "bcrypt";
-import db from "../models/models";
-import jwt from "jsonwebtoken";
+const bcrypt = require("bcrypt"); 
+const db = require("../models/models.cjs");
+const jwt = require("jsonwebtoken");
 
 // Déclaration de la variable User
-const User = db.User;
+const User = db.user;
 
 /**
  * Inscription de l'utlisateur

@@ -1,12 +1,10 @@
-import { DataTypes } from "sequelize";
-
-export default (sequelize, DataTypes) => {
+const moment = require("moment");
+module.exports = (sequelize, DataTypes) => {
   const Ingredients = sequelize.define("ingredients", {
     ingredient_id: {
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
     },
     sauce: {
       type: DataTypes.STRING,

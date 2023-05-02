@@ -1,22 +1,10 @@
 // Importing modules
-import express from "express";
-import userController from "../controllers/userController.js";
-
+const express = require('express');
+const userController = require('../controllers/userController.cjs');
 const { signup, login } = userController;
-import userAuth from "../middlewares/userAuth.js";
+const userAuth = require("../middlewares/userAuth.cjs")
 
 const router = express.Router();
-
-/**
- * Configuration de pug pour le rendu des fichiers HTML
- */
-router.set("views", "./views");
-router.set("view engine", "pug");
-
-/**
- * Configuration du routage des fichiers statiques
- */
-router.use("/public", express.static("public"));
 
 /**
  * Redirection de la page d'accueil vers la page de login

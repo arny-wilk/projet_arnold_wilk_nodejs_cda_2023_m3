@@ -1,7 +1,8 @@
 // import des modules requis
-import db from "../models/models";
+const express = require("express");
+const db = require("../models/models.cjs");
 
-const User = db.User;
+const User = db.user;
 
 /**
  * Fonction permettant de vérifier si le nom d'utilisateur ou l'email existe déjà dans
@@ -39,4 +40,4 @@ const saveUser = async (req, res, next) => {
 };
 
 // export du module
-export default saveUser;
+module.exports = { saveUser };
