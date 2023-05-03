@@ -35,7 +35,6 @@ lib/
 
 # Gatsby related
 .cache/
-public
 
 # Vite Preact related
 vite.config.js
