@@ -23,7 +23,8 @@ function deleteById(id) {
 }
 
 function create(pizza) {
-  let newPizza = new Pizza(pizza);
+  let { pizzaName, price } = pizza;
+  let newPizza = new Pizza({ pizza_name: pizzaName, price: price });
   return newPizza.save();
 }
 

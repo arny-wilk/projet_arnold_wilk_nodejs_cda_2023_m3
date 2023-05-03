@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const path = require("path");
 
 const sequelize = new Sequelize("pizzeria", "root", "root", {
   host: "localhost",
@@ -60,9 +59,10 @@ db.orderDessert = require("./orderDessertModel.cjs")(sequelize, DataTypes);
 // ONE TO MANY ASSOCIATIONS
 db.creditCard.belongsToMany(db.client, { through: db.clientCreditCard, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" });
 
-db.order.hasMany(db.client);
 
-db.client.hasMany(db.order); // A SUPPRIMER dans les tables POUR CORRIGER 
+// A SUPPRIMER dans les tables POUR CORRIGER 
+// db.order.hasMany(db.client);
+// db.client.hasMany(db.order);  
 
 db.client.belongsToMany(db.order, {through: db.clientOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" })
 

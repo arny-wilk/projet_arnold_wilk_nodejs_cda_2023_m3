@@ -1,5 +1,4 @@
 const db = require("../models/models.cjs");
-
 const Client = db.client;
 
 let clientCRUD = {
@@ -23,7 +22,23 @@ function deleteById(id) {
 }
 
 function create(client) {
-  let newClient = new Client(client);
+  let { firstname, lastname, mail, address, zipcode } = client;
+
+  let newClient = new Client(
+    {
+      firstname: firstname,
+      lastname: lastname,
+      mail: mail,
+      address: address,
+      zipcode: zipcode,
+    },
+    {
+      include: [
+        { association: db.clientOrderPref },
+        { association: db.clientCreditCard },
+      ],
+    }
+  );
   return newClient.save();
 }
 
@@ -33,7 +48,7 @@ function updateClient(client, id) {
     lastname: client.lastname,
     mail: client.mail,
     address: client.address,
-    zipcode: client.zipcode
+    zipcode: client.zipcode,
   };
   return Client.update(updateClient, { where: { id: id } });
 }

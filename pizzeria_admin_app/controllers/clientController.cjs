@@ -1,5 +1,7 @@
 const clientDAO = require("../dao/client.dao.cjs");
 
+const clientOrderPrefDAO = require("./dao/clientOrderPref.dao.cjs");
+
 let clientController = {
   addClient: addClient,
   findClient: findClient,
@@ -57,7 +59,9 @@ function updateClient(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    clientOrderPrefDAO.updateClientOrderPref()
 }
+
 
 function findClient(req, res) {
   clientDAO
