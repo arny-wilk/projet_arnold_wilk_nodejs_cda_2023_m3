@@ -72,3 +72,12 @@ Les écrans ne sont pas contractuelles, n'hésitez pas à être force de proposi
 - [ ] [USW015 - Lister les desserts](issues/web/usw015.md)
 - [ ] [USW016 - Notation des Pizzas](issues/web/usw016.md)
 - [ ] [USW017 - Composer sa pizza](issues/web/usw017.md)
+
+### PRINCIPALES ASSOCIATIONS
+#### Association entre les cartes de crédit et les clients
+![Association 1](./pizzeria_admin_app/public/images/associationClientCreditCard.png)
+#### Association entre les clients et les commandes
+![Association 2](./pizzeria_admin_app/public/images/associationOrderClient.png)
+#### Association entre les commandes et les principaux produits
+![Association 3](./pizzeria_admin_app/public/images/associationOrder.png)
+

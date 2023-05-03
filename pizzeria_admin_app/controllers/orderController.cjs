@@ -15,7 +15,6 @@ let orderController = {
 };
 
 function addOrder(req, res) {
-
   let {
     pizzaName,
     pizzaQuantity,
@@ -25,9 +24,9 @@ function addOrder(req, res) {
     dessertQuantity,
   } = req.body;
 
-  let pizza = pizzaCRUD.findAll({ where: { pizza_name: pizzaName}});
-  let drink = drinksCRUD.findAll({ where: { drink_name: drinkName}});
-  let dessert = dessertCRUD.findAll( { where: { dessert_name: dessertName}});
+  let pizza = pizzaCRUD.findAll({ where: { pizza_name: pizzaName } });
+  let drink = drinksCRUD.findAll({ where: { drink_name: drinkName } });
+  let dessert = dessertCRUD.findAll({ where: { dessert_name: dessertName } });
 
   let order = {
     total_price:
