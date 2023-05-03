@@ -47,7 +47,7 @@ function deleteDessertOrderById(req, res) {
 
 function updateDessertOrder(req, res) {
   dessertOrderDAO
-    .udpatePizza(req.body, req.params.id)
+    .updateDessertOrder(req.body, req.params.id)
     .then((data) => {
       res.status(200).json({
         message: "Pizza quantity updated successfully",

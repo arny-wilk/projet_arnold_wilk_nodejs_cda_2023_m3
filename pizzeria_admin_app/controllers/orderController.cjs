@@ -1,15 +1,8 @@
-const drinksCRUD = require("./drinks.dao.cjs");
-const dessertCRUD = require("./dessert.dao.cjs");
-const clienCRUD = require("./client.dao.cjs");
+const pizzaCRUD = require("../dao/pizza.dao.cjs");
+const drinksCRUD = require("../dao/drinks.dao.cjs");
+const dessertCRUD = require("../dao/dessert.dao.cjs");
 
 const orderDAO = require("../dao/order.dao.cjs");
-const clientOrderPrefCRUD = require("../dao/clientOrderPref.dao.cjs");
-const pizzaController = require("./pizzaController.cjs");
-const pizzaOrderController = require("./pizzaOrderController.cjs");
-const drinksController = require("./drinksController.cjs");
-const drinksOrderController = require("./drinksOrderController.cjs");
-const dessertController = require("./dessertController.cjs");
-const dessertOrderController = require("./dessertOrderController.cjs");
 
 // BUSINESS LOGIC HERE !!!!
 
@@ -22,20 +15,25 @@ let orderController = {
 };
 
 function addOrder(req, res) {
+
   let {
-    pizzaPrice,
-    quantityPizza,
-    drinksPrice,
+    pizzaName,
+    pizzaQuantity,
+    drinkName,
     drinkQuantity,
-    dessertPrice,
+    dessertName,
     dessertQuantity,
   } = req.body;
 
+  let pizza = pizzaCRUD.findAll({ where: { pizza_name: pizzaName}});
+  let drink = drinksCRUD.findAll({ where: { drink_name: drinkName}});
+  let dessert = dessertCRUD.findAll( { where: { dessert_name: dessertName}});
+
   let order = {
     total_price:
-      pizzaPrice * quantityPizza +
-      drinksPrice * drinkQuantity +
-      dessertPrice * dessertQuantity,
+      parseFloat(pizza.price) * parseFloat(pizzaQuantity) +
+      parseFloat(drink.price) * parseFloat(drinkQuantity) +
+      parseFloat(dessert.price) * parseFloat(dessertQuantity),
   };
 
   orderDAO
@@ -49,7 +47,7 @@ function addOrder(req, res) {
 }
 
 function findOrderById(req, res) {
-  clientDAO
+  orderDAO
     .findById(req.params.id)
     .then((data) => {
       res.send(data);
@@ -60,11 +58,11 @@ function findOrderById(req, res) {
 }
 
 function deleteOrderById(req, res) {
-  clientDAO
+  orderDAO
     .deleteById(req.params.id)
     .then((data) => {
       res.status(200).json({
-        message: "Client deleted successfully",
+        message: "Order deleted successfully",
         client: data,
       });
     })
@@ -73,23 +71,22 @@ function deleteOrderById(req, res) {
     });
 }
 
-function updateClient(req, res) {
-  clientDAO
+function updateOrder(req, res) {
+  orderDAO
     .updateClient(req.body, req.params.id)
     .then((data) => {
       res.status(200).json({
-        message: "Client updated successfully",
+        message: "Order updated successfully",
         client: data,
       });
     })
     .catch((err) => {
       console.log(`Error message : `, err);
     });
-  clientOrderPrefDAO.updateClientOrderPref();
 }
 
-function findClient(req, res) {
-  clientDAO
+function findOrder(req, res) {
+  orderDAO
     .findAll()
     .then((data) => {
       res.send(data);
