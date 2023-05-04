@@ -1,0 +1,21 @@
+include head.pug
+include navbar.pug
+
+h3(class="") Votre liste des
+button 
+        a(href="/users/list/add")=addNew
+table
+        tr
+            th Id
+            th=name
+            th=price
+            th=action
+        each obj in clients 
+                tr
+                    td #{obj.id}
+                    td #{obj.name}
+                    td #{obj}
+                        button
+                            a(href=`/users/list/${obj.id}`) edit
+                        button
+                            a(href=`/plats/delete/${obj.id}`) delete

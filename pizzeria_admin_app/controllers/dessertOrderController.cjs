@@ -9,9 +9,17 @@ let dessertOrderController = {
 };
 
 function addDessertOrder(req, res) {
-  let dessertOrder = req.body;
+  let {
+    pizzaName,
+    pizzaQuantity,
+    drinkName,
+    drinkQuantity,
+    dessertName,
+    dessertQuantity,
+  } = req.body;
+
   dessertOrderDAO
-    .create(dessertOrder)
+    .create({ quant_dessert: dessertQuantity })
     .then((data) => {
       res.send(data);
     })

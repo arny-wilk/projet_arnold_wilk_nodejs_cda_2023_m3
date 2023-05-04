@@ -1,7 +1,7 @@
 // server/index.js
 const express = require("express");
 const sequelize = require("sequelize");
-const dotenv = require("").config();
+// const dotenv = require(".env").config();
 const cookieParser = require("cookie-parser");
 const db = require("./models/models.cjs");
 const appRoutes = require("./routes/routes.cjs");

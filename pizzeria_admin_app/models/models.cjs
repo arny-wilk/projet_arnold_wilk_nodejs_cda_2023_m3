@@ -35,6 +35,7 @@ db.clientOrderPref = require("./clientOrderPrefModel.cjs")(
   DataTypes
 );
 db.orderBoy = require("./orderboyModel.cjs")(sequelize, DataTypes);
+db.orderBoyOrderPref = require("./orderboyOrderPref.cjs")(sequelize, DataTypes);
 db.creditCard = require("./creditCardModel.cjs")(sequelize, DataTypes);
 db.clientCreditCard = require("./clientCreditCardModel.cjs")(
   sequelize,
@@ -63,6 +64,8 @@ db.creditCard.belongsToMany(db.client, { through: db.clientCreditCard, ON_DELETE
 // A SUPPRIMER dans les tables POUR CORRIGER 
 // db.order.hasMany(db.client);
 // db.client.hasMany(db.order);  
+
+db.orderBoy.belongsToMany(db.order, { through: db.orderBoyOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE"});
 
 db.client.belongsToMany(db.order, {through: db.clientOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" })
 

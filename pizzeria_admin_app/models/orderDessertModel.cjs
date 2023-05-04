@@ -1,7 +1,6 @@
-const moment = require("moment");
 module.exports = (sequelize, DataTypes) => {
   const orderDessert = sequelize.define("order_dessert", {
-    order_des: {
+    dessert_op_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
