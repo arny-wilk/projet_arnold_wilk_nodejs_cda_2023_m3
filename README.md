@@ -79,4 +79,4 @@ Les écrans ne sont pas contractuelles, n'hésitez pas à être force de proposi
 #### Association entre les clients et les commandes
 ![Association 2](./pizzeria_admin_app/public/images/associationOrderClient.png)
 #### Association entre les commandes et les principaux produits
-![Association 3](./pizzeria_admin_app/public/images/associationOrder.png)
+![Association 3](./pizzeria_admin_app/public/images/AssociationOrder.png)
