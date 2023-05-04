@@ -1,2 +1,21 @@
 include head.pug
 include navbar.pug
+
+h3(class="main-content-h3") Votre liste des
+button(class="")
+        a(href="/users/list/add")=addNew
+table(class="main-content-table")
+        tr
+            th 
+            th
+            th
+            th
+        each obj in <object> 
+                tr
+                    td 
+                    td 
+                    td 
+                        button
+                            a(href=`/users/list/${obj.id}`) edit
+                        button
+                            a(href=`/plats/delete/${obj.id}`) delete
