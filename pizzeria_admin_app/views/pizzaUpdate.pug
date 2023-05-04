@@ -1,0 +1,11 @@
+include head.pug
+include navbar.pug
+
+h2 Editer Pizza
+form(action=`${valueID}` method="POST")
+    label(for=`${valueID}`) id 
+    label(for=`${valueID}`) Nom Pizza
+    input(type="text" name="pizzaName" placeholder=valuePizzaName) 
+    label(for=`${valueID}`) Prix de la pizza en €
+    input(type="text" name="price" placeholder=valuePricePizza) 
+    input(type="submit" value="Editer Pizza")

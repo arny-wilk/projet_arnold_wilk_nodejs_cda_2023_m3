@@ -1,2 +1,16 @@
 include head.pug
 include navbar.pug
+
+h2 Nouveau Client 
+form(action="/clients/add" method="POST") 
+        label(for="/clients/add") Prénom
+        input(type="text" name="firstname")
+        label(for="/clients/add") Nom
+        input(type="text" name="lastname")
+        label(for="/clients/add") Email
+        input(type="text" name="mail")
+        label(for="/clients/add") Adresse
+        input(type="text" name="address")
+        label(for="/clients/add" ) Code postal
+        input(type="text" name="zipcode")
+        input(type="submit" value="Créer")

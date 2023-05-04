@@ -1,2 +1,10 @@
 include head.pug
 include navbar.pug
+
+h2 Nouvelle Pizza
+form(action="/pizza/add" method="POST") 
+        label(for="/pizza/add") Nom Pizza
+        input(type="text" name="pizzaName")
+        label(for="/pizza/add" ) Prix Pizza en €
+        input(type="text" name="price")
+        input(type="submit" value="Créer")

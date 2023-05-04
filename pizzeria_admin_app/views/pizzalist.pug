@@ -1,22 +1,18 @@
 include head.pug
 include navbar.pug
 
-
 h3(class="main-content-h3") Votre liste des
-button(class="")
-        a(href="/users/list/add")=addNew
+button(class="main-content-btn")
+        a(href="/pizza/add")=addNew
 table(class="main-content-table")
         tr
-            th 
-            th
-            th
-            th
+            th Nom Pizza
+            th Prix €
         each obj in <object> 
                 tr
-                    td 
-                    td 
-                    td 
+                    td #{obj.pizza_name}
+                    td #{obj.price} €
                         button
-                            a(href=`/users/list/${obj.id}`) edit
+                            a(href=`/pizza/update/${obj.id}`) edit
                         button
-                            a(href=`/plats/delete/${obj.id}`) delete
+                            a(href=`/pizza/delete/${obj.id}`) delete

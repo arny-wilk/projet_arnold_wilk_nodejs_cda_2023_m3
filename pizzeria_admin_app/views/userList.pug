@@ -2,20 +2,21 @@ include head.pug
 include navbar.pug
 
 h3(class="main-content-h3") Votre liste des
-button(class="")
+button(class="main-content-btn")
         a(href="/users/list/add")=addNew
 table(class="main-content-table")
         tr
-            th 
-            th
-            th
-            th
+            th Nom utilisateur
+            th Email
+            th Créé le:
+            th Mis à jour le
         each obj in <object> 
                 tr
-                    td 
-                    td 
-                    td 
+                    td #{obj.user_name}
+                    td #{obj.email}
+                    td #{obj.createdAt}
+                    td #{obj.updatedAt}
                         button
-                            a(href=`/users/list/${obj.id}`) edit
+                            a(href=`/users/update/${obj.id}`) edit
                         button
                             a(href=`/plats/delete/${obj.id}`) delete
