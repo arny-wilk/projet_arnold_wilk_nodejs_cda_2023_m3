@@ -3,20 +3,21 @@ include navbar.pug
 
 
 h3(class="main-content-h3") Votre liste des
-button(class="")
-        a(href="/users/list/add")=addNew
+button(class="main-content-btn")
+        a(href="/order/add")=addNew
 table(class="main-content-table")
         tr
-            th 
-            th
-            th
-            th
+            th Id Commande
+            th Prix total
+            th Action
         each obj in <object> 
                 tr
-                    td 
-                    td 
+                    td #{obj.order_id}
+                    td #{obj.total_price}
                     td 
                         button
-                            a(href=`/users/list/${obj.id}`) edit
+                            a(href="#") Détails commande
                         button
-                            a(href=`/plats/delete/${obj.id}`) delete
+                            a(href=`/order/update/${obj.id}`) Editer la commande
+                        button
+                            a(href=`/order/delete/${obj.id}`) Supprimer commande

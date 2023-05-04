@@ -66,7 +66,15 @@ input {
   align-items: center;
 }
 
-.main-content
+.main-content-btn {
+  border-radius: 20px;
+  border: 0;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #226aa4;
+  color: #f5f6f7;
+  font-size: large;
+}
 
 .main-content-table {
   margin: 1rem;
@@ -75,16 +83,15 @@ input {
 }
 
 .main-content-table tr {
-    margin-left: 2rem;
-    padding: 1rem;
+  margin-left: 2rem;
+  padding: 1rem;
 }
 
 .main-content-table th {
-    color: #8d3495;
+  color: #8d3495;
 }
 
 .main-content-table td {
   margin-left: 2rem;
   padding: 1rem;
 }
-
