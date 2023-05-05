@@ -3,7 +3,7 @@ include navbar.pug
 
 h3(class="main-content-h3") Votre liste des
 button(class="main-content-btn")
-        a(href="/users/list/add")=addNew
+        a(href="/clients/list/add") Ajouter client
 table(class="main-content-table")
         tr
             th Prénom
@@ -12,7 +12,7 @@ table(class="main-content-table")
             th Adresse
             th Code postal
             th Action
-        each obj in clientObj
+        each obj in values
                 tr
                     td #{obj.firstname}
                     td #{obj.lastname}
@@ -21,6 +21,6 @@ table(class="main-content-table")
                     td #{obj.zipcode}
                     td 
                         button
-                            a(href=`/users/update/${obj.id}`) editer
+                            a(href=`/clients/list/update/${obj.client_id}`) editer
                         button
-                            a(href=`/users/delete/${obj.id}`) supprimer
+                            a(href=`/clients/list/delete/${obj.client_id}`) supprimer 

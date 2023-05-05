@@ -18,27 +18,19 @@ function findById(id) {
 }
 
 function deleteById(id) {
-  return Client.destroy({ where: { id: id } });
+  return Client.destroy({ where: { client_id: id } });
 }
 
 function create(client) {
   let { firstname, lastname, mail, address, zipcode } = client;
-
-  let newClient = new Client(
-    {
-      firstname: firstname,
-      lastname: lastname,
-      mail: mail,
-      address: address,
-      zipcode: zipcode,
-    },
-    {
-      include: [
-        { association: db.clientOrderPref },
-        { association: db.clientCreditCard },
-      ],
-    }
-  );
+  console.log(`Request Body to control : `, client);
+  let newClient = new Client({
+    firstname: firstname,
+    lastname: lastname,
+    mail: mail,
+    address: address,
+    zipcode: zipcode,
+  });
   return newClient.save();
 }
 
@@ -50,7 +42,7 @@ function updateClient(client, id) {
     address: client.address,
     zipcode: client.zipcode,
   };
-  return Client.update(updateClient, { where: { id: id } });
+  return Client.update(updateClient, { where: { client_id: id } });
 }
 
 module.exports = clientCRUD;

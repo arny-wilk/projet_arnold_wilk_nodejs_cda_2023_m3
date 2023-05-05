@@ -1,1 +1,11 @@
 include head.pug
+
+h2 S'enregistrer
+form(action="/signup" method="POST")
+    label(for="/signup") Nom d'utilsateur
+    input(type="text" name="userName" placeholder="Nom d'utilsateur")
+    label(for="/signup") Email
+    input(type="text" name="email" placeholder="Email")
+    label(for="/signup") Mot de passe
+    input(type="password" name="password" placeholder="Mot de passe")
+    input(type="submit" value="Signup")

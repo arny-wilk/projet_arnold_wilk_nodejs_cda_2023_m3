@@ -1,6 +1,7 @@
 // import des modules requis
 const express = require("express");
 const db = require("../models/models.cjs");
+const { emit } = require("nodemon");
 
 const User = db.user;
 
@@ -11,30 +12,32 @@ const User = db.user;
 const saveUser = async (req, res, next) => {
   // Recherche si l'utilisateur existe déjà dans la base de données
   try {
-    const username = await User.findOne({
+    let { userName, email, password } = req.body
+    const username = await User.findAll({
       where: {
-        user_name: req.body.user_name,
+        user_name: userName,
       },
     });
-    // si l'utilisateur existe bien alors on renvoie une réponse d'erruer avec un statut code 409
-    if (username) {
-      return res.json(409).send("username already in use");
-    }
-
+    // si l'utilisateur existe bien alors on renvoie une réponse d'erreur avec un statut code 409
+    
     // Verification de l'email
-    const emailCheck = await User.findOne({
+    const emailCheck = await User.findAll({
       where: {
-        email: req.body.email,
+        email: email,
       },
     });
-
-    // Si l'email existe dans la base de données on renvoie une réponse d'erreur avec le statut code 409
-    if (emailCheck) {
-      return res.json(409).send("Authentication failed");
+    
+    if (!username && !emailCheck) {
+      // return res.json(409).send("username already in use");
+      return res.send(req.body)
     }
+    next()
+    // Si l'email existe dans la base de données on renvoie une réponse d'erreur avec le statut code 409
+    // if (emailCheck) {
+      // return res.json(409).send("Authentication failed");
+    // }
 
-    next();
-  } catch (error) {
+  } catch (err) {
     console.log(`Error message : `, err);
   }
 };

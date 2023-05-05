@@ -20,7 +20,7 @@ function findById(id) {
 }
 
 function deleteById(id) {
-  return OrderPizza.destroy({ where: { id: id } });
+  return OrderPizza.destroy({ where: { order_id: id } });
 }
 
 function create(orderpizza) {
@@ -32,7 +32,7 @@ function updateOrderPizza(orderpizza, id) {
   let updateOrderPizza = {
     quant_pizza: orderpizza.quant_pizza,
   };
-  return OrderPizza.update(updateOrderPizza, { where: { id: id } });
+  return OrderPizza.update(updateOrderPizza, { where: { order_id: id } });
 }
 
 module.exports = orderPizzaCRUD;

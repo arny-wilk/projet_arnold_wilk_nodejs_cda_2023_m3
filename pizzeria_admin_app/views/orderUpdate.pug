@@ -4,9 +4,9 @@ include navbar.pug
 h2 Editer Commande
 form(action=`${valueID}` method="POST")
     label(for=`${valueID}`) Command : #{valueID} 
-    input(type="text" name="totalPrice" placeholder=valueTotalPrice) 
+    input(type="text" name="totalPrice" value=`${valueTotalPrice}`) 
     label(for=`${valueID}`) Date de création
-    input(type="text" name="createdAt" placeholder=valueCreatedAt) 
+    input(type="text" name="createdAt" value=`${valueCreatedAt}`) 
     label(for=`${valueID}`) Date de modification
-    input(type="text" name="updatedAt" placeholder=valueUpdatedAt) 
+    input(type="text" name="updatedAt" value=`${valueUpdatedAt}`) 
     input(type="submit" value="Editer Commande")

@@ -3,16 +3,18 @@ include navbar.pug
 
 h3(class="main-content-h3") Votre liste des
 button(class="main-content-btn")
-        a(href="/pizza/add")=addNew
+        a(href="/pizza/list/add") Ajouter une nouvelle pizza
 table(class="main-content-table")
         tr
             th Nom Pizza
             th Prix €
-        each obj in <object> 
+            th Action
+        each obj in values
                 tr
                     td #{obj.pizza_name}
                     td #{obj.price} €
+                    td
                         button
-                            a(href=`/pizza/update/${obj.id}`) edit
+                            a(href=`/pizza/list/update/${obj.pizza_id}`) edit
                         button
-                            a(href=`/pizza/delete/${obj.id}`) delete
+                            a(href=`/pizza/list/delete/${obj.pizza_id}`) delete

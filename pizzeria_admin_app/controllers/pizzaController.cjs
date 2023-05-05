@@ -8,16 +8,17 @@ let pizzaController = {
   deletePizzaById: deletePizzaById,
 };
 
-function addPizza(req, res) {
-  let pizza = req.body;
+function addPizza(req, res, next) {
+  let { pizzaName, price } = req.body;
   pizzaDAO
-    .create(pizza)
+    .create({ pizza_name: pizzaName, price: price })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
 function findPizzaById(req, res) {
@@ -31,7 +32,7 @@ function findPizzaById(req, res) {
     });
 }
 
-function deletePizzaById(req, res) {
+function deletePizzaById(req, res, next) {
   pizzaDAO.deleteById(req.params.id).then((data) => {
     res
       .status(200)
@@ -43,9 +44,10 @@ function deletePizzaById(req, res) {
         console.log(`Error message : `, err);
       });
   });
+  next();
 }
 
-function updatePizza(req, res) {
+function updatePizza(req, res, next) {
   pizzaDAO
     .udpatePizza(req.body, req.params.id)
     .then((data) => {
@@ -57,6 +59,7 @@ function updatePizza(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
 function findPizza(req, res) {

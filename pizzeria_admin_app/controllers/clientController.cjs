@@ -1,6 +1,6 @@
 const clientDAO = require("../dao/client.dao.cjs");
 
-const clientOrderPrefDAO = require("./dao/clientOrderPref.dao.cjs");
+const clientOrderPrefDAO = require("../dao/clientOrderPref.dao.cjs");
 
 let clientController = {
   addClient: addClient,
@@ -10,7 +10,7 @@ let clientController = {
   deleteClientById: deleteClientById,
 };
 
-function addClient(req, res) {
+function addClient(req, res, next) {
   let client = req.body;
   clientDAO
     .create(client)
@@ -20,6 +20,7 @@ function addClient(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
 function findClientById(req, res) {
@@ -33,8 +34,8 @@ function findClientById(req, res) {
     });
 }
 
-function deleteClientById(req, res) {
-  clientDAO
+async function deleteClientById(req, res, next) {
+  await clientDAO
     .deleteById(req.params.id)
     .then((data) => {
       res.status(200).json({
@@ -45,10 +46,11 @@ function deleteClientById(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
-function updateClient(req, res) {
-  clientDAO
+async function updateClient(req, res, next) {
+  await clientDAO
     .updateClient(req.body, req.params.id)
     .then((data) => {
       res.status(200).json({
@@ -59,7 +61,7 @@ function updateClient(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
-    clientOrderPrefDAO.updateClientOrderPref()
+    next()
 }
 
 

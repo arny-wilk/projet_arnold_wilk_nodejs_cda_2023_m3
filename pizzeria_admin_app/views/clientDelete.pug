@@ -2,16 +2,15 @@ include head.pug
 include navbar.pug
 
 h2 Supprimer Client
-form(action=`${valueID}` method="POST")
-    label(for=`${valueID}`) id 
-    label(for=`${valueID}`) Prénom 
-    input(type="text" name="firstname" placeholder=valueFirstname) 
-    label(for=`${valueID}`) Nom
-    input(type="text" name="lastname" placeholder=valueLastName) 
-    label(for=`${valueID}`) Email 
-    input(type="text" name="mail" placeholder=valueMail) 
-    label(for=`${valueID}`) Adresse 
-    input(type="text" name="address" placeholder=valueAddress) 
-    label(for=`${valueID}`) Code Postal
-    input(type="text" name="zipcode" placeholder=valueZipcode) 
+form(action=`${valueId}` method="POST")
+    label(for=`${valueId}`) Prénom 
+    input(type="text" name="firstname" value=`${valueFirstname}`) 
+    label(for=`${valueId}`) Nom
+    input(type="text" name="lastname" value=`${valueLastname}`) 
+    label(for=`${valueId}`) Email 
+    input(type="text" name="mail" value=`${valueMail}`) 
+    label(for=`${valueId}`) Adresse 
+    input(type="text" name="address" value=`${valueAddress}`) 
+    label(for=`${valueId}`) Code Postal
+    input(type="text" name="zipcode" value=`${valueZipcode}`) 
     input(type="submit" value="Supprimer le client")

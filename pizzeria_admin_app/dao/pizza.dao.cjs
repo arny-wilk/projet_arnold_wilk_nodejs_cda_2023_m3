@@ -19,12 +19,11 @@ function findById(id) {
 }
 
 function deleteById(id) {
-  return Pizza.destroy({ where: { id: id } });
+  return Pizza.destroy({ where: { pizza_id: id } });
 }
 
 function create(pizza) {
-  let { pizzaName, price } = pizza;
-  let newPizza = new Pizza({ pizza_name: pizzaName, price: price });
+  let newPizza = new Pizza(pizza);
   return newPizza.save();
 }
 
@@ -33,7 +32,7 @@ function updatePizza(pizza, id) {
     pizza_name: pizza.pizza_name,
     price: pizza.price,
   };
-  return Pizza.update(updatePizza, { where: { id: id } });
+  return Pizza.update(updatePizza, { where: { pizza_id: id } });
 }
 
 module.exports = pizzaCRUD;

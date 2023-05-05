@@ -2,9 +2,9 @@ include head.pug
 include navbar.pug
 
 h2 Nouvelle Pizza
-form(action="/pizza/add" method="POST") 
-        label(for="/pizza/add") Nom Pizza
+form(action="/pizza/list/add" method="POST") 
+        label(for="/pizza/list/add") Nom Pizza
         input(type="text" name="pizzaName")
-        label(for="/pizza/add" ) Prix Pizza en €
+        label(for="/pizza/list/add" ) Prix Pizza en €
         input(type="text" name="price")
         input(type="submit" value="Créer")

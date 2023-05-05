@@ -2,12 +2,11 @@ include head.pug
 include navbar.pug
 
 h2 Supprimer L'utilisateur
-form(action=`${valueID}` method="POST")
-    label(for=`${valueID}`) id 
-    label(for=`${valueID}`) Nom utilisateur
-    input(type="text" name="userName" placeholder=valueUsername) 
-    label(for=`${valueID}`) Email 
-    input(type="text" name="email" placeholder=valueMail) 
-    label(for=`${valueID}`) Mot de passe
-    input(type="text" name="password" placeholder=valuePassword) 
+form(action=`${valueId}` method="POST")
+    label(for=`${valueId}`) Nom utilisateur
+    input(type="text" name="userName" value=`${valueUserName}`) 
+    label(for=`${valueId}`) Email 
+    input(type="text" name="email" value=`${valueEmail}`) 
+    label(for=`${valueId}`) Mot de passe
+    input(type="password" name="password" value=`${valuePassword}`)
     input(type="submit" value="Supprimer l'utilisateur")

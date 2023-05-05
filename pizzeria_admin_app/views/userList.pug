@@ -1,22 +1,24 @@
 include head.pug
 include navbar.pug
 
-h3(class="main-content-h3") Votre liste des
+h3(class="main-content-h3") Votre liste des Utilisateurs
 button(class="main-content-btn")
-        a(href="/users/list/add")=addNew
+        a(href="/users/list/add") Ajouter un nouvel utilisateur
 table(class="main-content-table")
         tr
             th Nom utilisateur
             th Email
             th Créé le:
             th Mis à jour le
-        each obj in <object> 
+            th Action
+        each obj in values
                 tr
                     td #{obj.user_name}
                     td #{obj.email}
                     td #{obj.createdAt}
                     td #{obj.updatedAt}
+                    td
                         button
-                            a(href=`/users/update/${obj.id}`) edit
+                            a(href=`/users/list/update/${obj.user_id}`) edit
                         button
-                            a(href=`/plats/delete/${obj.id}`) delete
+                            a(href=`/users/list/delete/${obj.user_id}`) delete

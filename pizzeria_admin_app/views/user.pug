@@ -2,11 +2,11 @@ include head.pug
 include navbar.pug
 
 h2 Nouveau Utilisateur 
-form(action="" method="POST") 
-        label(for="/users/add") Nom utilisateur
+form(action="/users/list/add" method="POST") 
+        label(for="/users/list/add") Nom utilisateur
         input(type="text" name="userName")
-        label(for="/users/add") Email
+        label(for="/users/list/add") Email
         input(type="text" name="email")
-        label(for="/users/add") Mot de passe
+        label(for="/users/list/add") Mot de passe
         input(type="text" name="password")
         input(type="submit" value="Créer")

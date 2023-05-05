@@ -35,7 +35,7 @@ li {
 
 input {
   border-radius: 20px;
-  color: #60ac94;
+  color: #107052;
   font-weight: 700;
   border: 1px solid rgb(3, 3, 3);
 }
@@ -59,10 +59,10 @@ input {
 }
 
 .main-content-h3 {
-  margin: 1rem;
+  margin-top: 5rem;
   padding: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
 }
 
@@ -71,9 +71,13 @@ input {
   border: 0;
   margin: 1rem;
   padding: 1rem;
-  background-color: #226aa4;
   color: #f5f6f7;
+  background-color: #226aa4;
   font-size: large;
+}
+
+.main-content-btn a {
+  color: rgb(208, 208, 211);
 }
 
 .main-content-table {

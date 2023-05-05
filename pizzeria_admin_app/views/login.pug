@@ -1,1 +1,14 @@
 include head.pug
+
+h2 S'authentifier
+form(action="/login" method="POST")
+    label(for="/login") Nom d'utilsateur
+    input(type="text" name="userName" placeholder="Nom d'utilsateur")
+    label(for="/login") Email
+    input(type="text" name="email" placeholder="Email")
+    label(for="/login") Mot de passe
+    input(type="password" name="password" placeholder="Mot de passe")
+    input(type="submit" value="Login")
+
+
+a(href="/signup") Créer un compte
