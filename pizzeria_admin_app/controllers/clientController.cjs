@@ -34,8 +34,8 @@ function findClientById(req, res) {
     });
 }
 
-async function deleteClientById(req, res, next) {
-  await clientDAO
+function deleteClientById(req, res, next) {
+  clientDAO
     .deleteById(req.params.id)
     .then((data) => {
       res.status(200).json({
@@ -49,8 +49,8 @@ async function deleteClientById(req, res, next) {
     next();
 }
 
-async function updateClient(req, res, next) {
-  await clientDAO
+function updateClient(req, res, next) {
+  clientDAO
     .updateClient(req.body, req.params.id)
     .then((data) => {
       res.status(200).json({

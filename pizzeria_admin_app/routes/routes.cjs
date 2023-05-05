@@ -14,8 +14,6 @@ const pizzaDAO = require("../dao/pizza.dao.cjs");
 const clientDAO = require("../dao/client.dao.cjs");
 const orderboyDAO = require("../dao/orderboy.dao.cjs");
 const orderDAO = require("../dao/order.dao.cjs");
-const { clientCRUD } = require("../dao/client.dao.cjs");
-const { orderBoy } = require("../models/models.cjs");
 
 const { addPizza, updatePizza, deletePizzaById } = pizzaController;
 const { addClient, updateClient, deleteClientById } = clientController;
@@ -160,16 +158,9 @@ router.get("/pizza/list/delete/:id", async (req, res) => {
     valuePricePizza: pizza.price,
   });
 });
-router.post(
-  "/pizza/list/delete/:id",
-  async (req, res, next) => {
-    await pizzaDAO.deleteById(req.params.id);
-    next();
-  },
-  (req, res) => {
-    res.redirect("/pizza/list");
-  }
-);
+router.post("/pizza/list/delete/:id", deletePizzaById, (req, res) => {
+  res.redirect("/pizza/list");
+});
 
 ///////////////////////////////////////////////////
 router.get("/clients/list", async (req, res) => {
@@ -196,16 +187,9 @@ router.get("/clients/list/update/:id", async (req, res) => {
     valueZipcode: client.zipcode,
   });
 });
-router.post(
-  "/clients/list/update/:id",
-  async (req, res, next) => {
-    await clientDAO.updateClient(req.body, req.params.id);
-    next();
-  },
-  (req, res) => {
-    res.redirect("/clients/list");
-  }
-);
+router.post("/clients/list/update/:id", updateClient, (req, res) => {
+  res.redirect("/clients/list");
+});
 
 router.get("/clients/list/delete/:id", async (req, res) => {
   const client = await clientDAO.findById(req.params.id);
@@ -218,16 +202,9 @@ router.get("/clients/list/delete/:id", async (req, res) => {
     valueZipcode: client.zipcode,
   });
 });
-router.post(
-  "/clients/list/delete/:id",
-  async (req, res, next) => {
-    await clientDAO.deleteById(req.params.id);
-    next();
-  },
-  async (req, res) => {
-    res.redirect("/clients/list");
-  }
-);
+router.post("/clients/list/delete/:id", deleteClientById, (req, res) => {
+  res.redirect("/clients/list");
+});
 
 ///////////////////////////////////////////////////
 router.get("/orderboy/list", async (req, res) => {
@@ -254,32 +231,68 @@ router.get("/orderboy/list/update/:id", async (req, res) => {
   });
 });
 router.post("/orderboy/list/update/:id", updateOrderboy, (req, res) => {
-  res.redirect('/orderboy/list');
+  res.redirect("/orderboy/list");
 });
 
-router.get("/orderboy/list/delete/:id", (req, res) => {
-  res.render("orderboy");
+router.get("/orderboy/list/delete/:id", async (req, res) => {
+  const orderboy = await orderboyDAO.findById(req.params.id);
+  res.render("orderboyDelete", {
+    valueId: orderboy.orderboy_id,
+    valueFirstname: orderboy.firstname_boy,
+    valueLastname: orderboy.lastname_boy,
+    valueMail: orderboy.mail_boy,
+    valueVehicule: orderboy.vehicule,
+  });
 });
-router.post("/orderboy/list/delete/:id");
+router.post("/orderboy/list/delete/:id", deleteOrderboyById, (req, res) => {
+  res.redirect("/orderboy/list");
+});
 
 ///////////////////////////////////////////////////
-router.get("/orders/list", (req, res) => {
-  res.render("orderList");
+router.get("/orders/list", async (req, res) => {
+  const renderOrder = await orderDAO.findAll();
+  res.render("orderList", {
+    values: renderOrder,
+  });
 });
 router.get("/orders/list/add", (req, res) => {
   res.render("order");
 });
 router.post("/orders/list/add", (req, res) => {});
 
+router.get("/orders/list/details/:id");
+
+router.get("/orders/list/details/:id/:client_op")
+router.post("/orders/list/details/update/:id/:client_op")
+router.post("/orders/list/details/delete/:id/:client_op")
+
+router.get("/orders/list/details/:id/:orderboy_op_id")
+router.post("/orders/list/details/update/:id/:orderboy_op_id")
+router.post("/orders/list/details/delete/:id/:orderboy_op_id")
+
+router.get("/orders/list/details/:id/:pizza_op_id")
+router.get("/orders/list/details/:id/:pizza_op_id")
+router.get("/orders/list/details/:id/:pizza_op_id")
+
+router.get("/orders/list/details/:id/:drink_op_id")
+router.get("/orders/list/details/:id/:drink_op_id")
+router.get("/orders/list/details/:id/:drink_op_id")
+
+router.get("/orders/list/details/:id/:dessert_op_id")
+router.get("/orders/list/details/:id/:dessert_op_id")
+router.get("/orders/list/details/:id/:dessert_op_id")
+
+
 router.get("/orders/list/update/:id", (req, res) => {
-  res.render("order");
+  res.render("orderUpdate");
 });
 router.post("/orders/list/update/:id");
 
 router.get("/orders/list/delete/:id", (req, res) => {
-  res.render("order");
+  res.render("orderDelete");
 });
 router.post("/orders/list/delete/:id");
+
 
 ///////////////////////////////////////////////////
 router.get("/ingredients/list");

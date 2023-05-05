@@ -2,22 +2,22 @@ include head.pug
 include navbar.pug
 
 
-h3(class="main-content-h3") Votre liste des
+h3(class="main-content-h3") Votre liste des commandes
 button(class="main-content-btn")
-        a(href="/order/add")=addNew
+        a(href="/orders/list/add") Ajouter commande
 table(class="main-content-table")
         tr
-            th Id Commande
+            th date commande
             th Prix total
             th Action
-        each obj in <object> 
+        each obj in values
                 tr
-                    td #{obj.order_id}
+                    td #{obj.createdAt}
                     td #{obj.total_price}
                     td 
                         button
-                            a(href="#") Détails commande
+                            a(href=`/orders/list/details/${obj.order_id}`) Détails commande
                         button
-                            a(href=`/order/update/${obj.id}`) Editer la commande
+                            a(href=`/orders/list/update/${obj.order_id}`) Editer la commande
                         button
-                            a(href=`/order/delete/${obj.id}`) Supprimer commande
+                            a(href=`/orders/list/delete/${obj.order_id}`) Supprimer commande
