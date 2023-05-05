@@ -8,16 +8,22 @@ let orderBoyController = {
   deleteOrderboyById: deleteOrderboyById,
 };
 
-function addOrderBoy(req, res) {
-  let orderBoy = req.body;
+function addOrderBoy(req, res, next) {
+  let { firstname, lastname, mail, vehicule } = req.body;
   orderboyDAO
-    .create(orderBoy)
+    .create({
+      firstname_boy: firstname,
+      lastname_boy: lastname,
+      mail_boy: mail,
+      vehicule: vehicule,
+    })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       console.log(`Error message: `, err);
     });
+    next();
 }
 
 function findOrderboyById(req, res) {
@@ -31,7 +37,7 @@ function findOrderboyById(req, res) {
     });
 }
 
-function deleteOrderboyById(req, res) {
+function deleteOrderboyById(req, res, next) {
   orderboyDAO
     .deleteById(req.params.id)
     .then((data) => {
@@ -43,9 +49,10 @@ function deleteOrderboyById(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
-function updateOrderboy(req, res) {
+function updateOrderboy(req, res, next) {
   orderboyDAO
     .updateOrderboy(req.body, req.params.id)
     .then((data) => {
@@ -57,6 +64,7 @@ function updateOrderboy(req, res) {
     .catch((err) => {
       console.log(`Error message : `, err);
     });
+    next();
 }
 
 function findOrderboy(req, res) {

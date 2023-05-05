@@ -1,14 +1,15 @@
 include head.pug
 include navbar.pug
 
-h2 Nouveau Livreur
-form(action="/orderboy/add" method="POST") 
-        label(for="/orderboy/add") Prénom
-        input(type="text" name="firstname")
-        label(for="/orderboy/add") Nom
-        input(type="text" name="lastname")
-        label(for="/orderboy/add") Email
-        input(type="text" name="mail")
-        label(for="/orderboy/add") Vehicule
-        input(type="text" name="vehicule")
-        input(type="submit" value="Créer")
+section(class="main-content")
+        h3(class="main-content-h3") Nouveau Livreur
+        form(action="/orderboy/list/add" method="POST") 
+                label(for="/orderboy/list/add") Prénom
+                input(type="text" name="firstname")
+                label(for="/orderboy/list/add") Nom
+                input(type="text" name="lastname")
+                label(for="/orderboy/list/add") Email
+                input(type="text" name="mail")
+                label(for="/orderboy/list/add") Vehicule
+                input(type="text" name="vehicule")
+                input(type="submit" value="Créer")

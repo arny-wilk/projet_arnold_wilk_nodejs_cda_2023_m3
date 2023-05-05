@@ -2,14 +2,13 @@ include head.pug
 include navbar.pug
 
 h2 Editer livreur
-form(action=`${valueID}` method="POST")
-    label(for=`${valueID}`) id 
-    label(for=`${valueID}`) Prénom 
+form(action=`${valueId}` method="POST")
+    label(for=`${valueId}`) Prénom 
     input(type="text" name="firstname" value=`${valueFirstname}`) 
-    label(for=`${valueID}`) Nom
-    input(type="text" name="lastname" value=`${valueLastName}`) 
-    label(for=`${valueID}`) Email 
+    label(for=`${valueId}`) Nom
+    input(type="text" name="lastname" value=`${valueLastname}`) 
+    label(for=`${valueId}`) Email 
     input(type="text" name="mail" value=`${valueMail}`) 
-    label(for=`${valueID}`) Vehicule
+    label(for=`${valueId}`) Vehicule
     input(type="text" name="vehicule" value=`${valueVehicule}`) 
     input(type="submit" value="Editer le Livreur")

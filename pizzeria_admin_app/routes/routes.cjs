@@ -14,7 +14,8 @@ const pizzaDAO = require("../dao/pizza.dao.cjs");
 const clientDAO = require("../dao/client.dao.cjs");
 const orderboyDAO = require("../dao/orderboy.dao.cjs");
 const orderDAO = require("../dao/order.dao.cjs");
-const { default: clientCRUD } = require("../dao/client.dao.cjs");
+const { clientCRUD } = require("../dao/client.dao.cjs");
+const { orderBoy } = require("../models/models.cjs");
 
 const { addPizza, updatePizza, deletePizzaById } = pizzaController;
 const { addClient, updateClient, deleteClientById } = clientController;
@@ -202,7 +203,7 @@ router.post(
     next();
   },
   (req, res) => {
-    res.redirect("/clients/list/");
+    res.redirect("/clients/list");
   }
 );
 
@@ -224,23 +225,37 @@ router.post(
     next();
   },
   async (req, res) => {
-    res.redirect("/clients/list/");
+    res.redirect("/clients/list");
   }
 );
 
 ///////////////////////////////////////////////////
-router.get("/orderboy/list", (req, res) => {
-  res.render("orderboyList");
+router.get("/orderboy/list", async (req, res) => {
+  const orderboys = await orderboyDAO.findAll();
+  res.render("orderboyList", {
+    values: orderboys,
+  });
 });
 router.get("/orderboy/list/add", (req, res) => {
   res.render("orderboy");
 });
-router.post("/orderboy/list/add", (req, res) => {});
-
-router.get("/orderboy/list/update/:id", (req, res) => {
-  res.render("orderboy");
+router.post("/orderboy/list/add", addOrderBoy, (req, res) => {
+  res.redirect("/orderboy/list");
 });
-router.post("/orderboy/list/update/:id");
+
+router.get("/orderboy/list/update/:id", async (req, res) => {
+  const orderboy = await orderboyDAO.findById(req.params.id);
+  res.render("orderboyUpdate", {
+    valueId: orderboy.orderboy_id,
+    valueFirstname: orderboy.firstname_boy,
+    valueLastname: orderboy.lastname_boy,
+    valueMail: orderboy.mail_boy,
+    valueVehicule: orderboy.vehicule,
+  });
+});
+router.post("/orderboy/list/update/:id", updateOrderboy, (req, res) => {
+  res.redirect('/orderboy/list');
+});
 
 router.get("/orderboy/list/delete/:id", (req, res) => {
   res.render("orderboy");

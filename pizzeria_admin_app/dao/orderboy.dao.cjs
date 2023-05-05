@@ -19,7 +19,7 @@ function findById(id) {
 }
 
 function deleteById(id) {
-  return Orderboy.destroy({ where: { id: id } });
+  return Orderboy.destroy({ where: { orderboy_id: id } });
 }
 
 function create(orderBoy) {
@@ -29,12 +29,12 @@ function create(orderBoy) {
 
 function updateOrderboy(orderBoy, id) {
   let updateOrderboy = {
-    firstname_boy: orderBoy.firstname_boy,
-    lastname_boy: orderBoy.lastname_boy,
-    mail_boy: orderBoy.mail_boy,
+    firstname_boy: orderBoy.firstname,
+    lastname_boy: orderBoy.lastname,
+    mail_boy: orderBoy.mail,
     vehicule: orderBoy.vehicule,
   };
-  return Orderboy.update(updateOrderboy, { where: { id: id } });
+  return Orderboy.update(updateOrderboy, { where: { orderboy_id: id } });
 }
 
 module.exports = orderBoyCRUD;
