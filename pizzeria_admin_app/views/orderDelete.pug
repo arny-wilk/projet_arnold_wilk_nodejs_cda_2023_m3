@@ -5,4 +5,6 @@ h2 Supprimer Commande
 form(action=`${valueId}` method="POST")
     label(for=`${valueId}`) Command : #{valueID} 
     input(type="text" name="totalPrice" value=`${valueTotalPrice}`) 
+    label(for=`${valueId}`) Command : #{valueClientId}
+    input(type="text" name="clientId" value=`${valueClientId}`)
     input(type="submit" value="Supprimer Commande")

@@ -9,11 +9,13 @@ table(class="main-content-table")
         tr
             th date commande
             th Prix total
+            th Client
             th Action
         each obj in values
                 tr
                     td #{obj.createdAt}
                     td #{obj.total_price}
+                    td #{obj.clientClientId}
                     td 
                         button
                             a(href=`/orders/list/details/${obj.order_id}`) Détails commande

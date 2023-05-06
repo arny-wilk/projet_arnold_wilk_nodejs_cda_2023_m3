@@ -2,7 +2,9 @@ include head.pug
 include navbar.pug
 
 h2 Editer Commande
-form(action=`${valueID}` method="POST")
-    label(for=`${valueID}`) Command : #{valueID} 
+form(action=`${valueId}` method="POST")
+    label(for=`${valueId}`) Command : #{valueId} 
     input(type="text" name="totalPrice" value=`${valueTotalPrice}`) 
+    label(for=`${valueId}`) Command : #{valueClientId}
+    input(type="text" name="clientId" value=`${valueClientId}`)
     input(type="submit" value="Editer Commande")
