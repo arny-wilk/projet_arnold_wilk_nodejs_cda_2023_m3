@@ -61,13 +61,13 @@ db.orderDessert = require("./orderDessertModel.cjs")(sequelize, DataTypes);
 db.creditCard.belongsToMany(db.client, { through: db.clientCreditCard, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" });
 
 
-// A SUPPRIMER dans les tables POUR CORRIGER 
-// db.order.hasMany(db.client);
-// db.client.hasMany(db.order);  
+// db.client.belongsToMany(db.order, {through: db.clientOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" })
+db.order.hasMany(db.client, { foreignKey: 'client_id', ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" })
+db.order.belongsTo(db.client)
+
 
 db.orderBoy.belongsToMany(db.order, { through: db.orderBoyOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE"});
 
-db.client.belongsToMany(db.order, {through: db.clientOrderPref, ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" })
 
 db.pizza.belongsToMany(db.order, { through: db.orderPizza,  ON_DELETE: "SET_NULL", ON_UPDATE: "CASCADE" });
 

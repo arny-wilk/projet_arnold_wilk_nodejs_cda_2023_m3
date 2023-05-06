@@ -35,13 +35,13 @@ Les écrans ne sont pas contractuelles, n'hésitez pas à être force de proposi
 
 ### Administration
 
-- [ ] [USA001 - Authentification - Page Login](issues/admin/usa001.md)
+- [x] [USA001 - Authentification - Page Login](issues/admin/usa001.md)
 - [x] :dart: [USA002 - Menu](issues/admin/usa002.md)
 - [x] [USA003 - Utilisateur - CRUD](issues/admin/usa003.md)
 - [x] :dart: [USA004 - Pizza - CRUD](issues/admin/usa004.md)
-- [x] :dart: [USA005 - Livreur - CRUD](issues/admin/usa005.md)
-- [x] :dart: [USA006 - Client - CRUD](issues/admin/usa006.md)
-- [x] :dart: [USA007 - Commande - CRUD](issues/admin/usa007.md)
+- [ ] :dart: [USA005 - Livreur - CRUD](issues/admin/usa005.md)
+- [ ] :dart: [USA006 - Client - CRUD](issues/admin/usa006.md)
+- [ ] :dart: [USA007 - Commande - CRUD](issues/admin/usa007.md)
 - [ ] [USA008 - Statistiques (temps réel)](issues/admin/usa008.md)
 - [ ] [USA009 - Promotions - CRUD](issues/admin/usa009.md)
 - [ ] [USA010 - Historique des emails envoyés](issues/admin/usa010.md)
@@ -79,4 +79,4 @@ Les écrans ne sont pas contractuelles, n'hésitez pas à être force de proposi
 #### Association entre les clients et les commandes
 ![Association 2](./pizzeria_admin_app/public/images/associationOrderClient.png)
 #### Association entre les commandes et les principaux produits
-![Association 3](./pizzeria_admin_app/public/images/AssociationOrder.png)
+![Association 3](./pizzeria_admin_app/public/images/OrderTableAssociations.png)
