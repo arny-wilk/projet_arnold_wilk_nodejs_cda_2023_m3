@@ -258,30 +258,15 @@ router.get("/orders/list", async (req, res) => {
 router.get("/orders/list/add", (req, res) => {
   res.render("order");
 });
-router.post("/orders/list/add", (req, res) => {});
+router.post("/orders/list/add", addOrder, (req, res) => {});
 
-router.get("/orders/list/details/:id");
+router.get("/orders/list/:id/details/:clientId");
+router.get("/orders/list/:id/details/:clientId/addBoy");
+router.post("/orders/list/:id/details/:clientId/addBoy");
 
-router.get("/orders/list/details/:id/:client_op")
-router.post("/orders/list/details/update/:id/:client_op")
-router.post("/orders/list/details/delete/:id/:client_op")
+router.get("/orders/list/:id/details/:clientId/:orderBoyId")
 
-router.get("/orders/list/details/:id/:orderboy_op_id")
-router.post("/orders/list/details/update/:id/:orderboy_op_id")
-router.post("/orders/list/details/delete/:id/:orderboy_op_id")
-
-router.get("/orders/list/details/:id/:pizza_op_id")
-router.get("/orders/list/details/:id/:pizza_op_id")
-router.get("/orders/list/details/:id/:pizza_op_id")
-
-router.get("/orders/list/details/:id/:drink_op_id")
-router.get("/orders/list/details/:id/:drink_op_id")
-router.get("/orders/list/details/:id/:drink_op_id")
-
-router.get("/orders/list/details/:id/:dessert_op_id")
-router.get("/orders/list/details/:id/:dessert_op_id")
-router.get("/orders/list/details/:id/:dessert_op_id")
-
+router.get("/orders/list/:id/details/:clientId/");
 
 router.get("/orders/list/update/:id", (req, res) => {
   res.render("orderUpdate");
@@ -292,7 +277,6 @@ router.get("/orders/list/delete/:id", (req, res) => {
   res.render("orderDelete");
 });
 router.post("/orders/list/delete/:id");
-
 
 ///////////////////////////////////////////////////
 router.get("/ingredients/list");

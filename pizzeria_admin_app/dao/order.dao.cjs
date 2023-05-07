@@ -1,7 +1,6 @@
 const db = require("../models/models.cjs");
 
 const Order = db.order;
-const ClientOrderPref = db.clientOrderPref;
 const OrderPizza = db.orderPizza;
 const OrderDrinks = db.orderDrinks;
 const OrderDessert = db.orderDessert;
@@ -27,20 +26,7 @@ function deleteById(id) {
 }
 
 function create(order) {
-  let { totalPrice } = order;
-  let newOrder = new Order(
-    {
-      total_price: totalPrice,
-    },
-    {
-      include: [
-        { association: db.clientOrderPref },
-        { association: db.orderPizza },
-        { association: db.orderDrinks },
-        { association: db.orderDessert },
-      ],
-    }
-  );
+  let newOrder = new Order(order);
   return newOrder.save();
 }
 
