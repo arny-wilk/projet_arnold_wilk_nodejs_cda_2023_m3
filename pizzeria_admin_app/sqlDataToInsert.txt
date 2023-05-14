@@ -1,0 +1,27 @@
+# SecretKey:laviededeveloppeurnodejsnestpassimple
+
+# INSERTING DATA FOR PIZZA TABLE
+INSERT INTO pizzas(pizza_id,pizza_name,price) VALUES (1,"margarita",9);
+INSERT INTO pizzas(pizza_id,pizza_name,price) VALUES (2,"fromagere",12);
+INSERT INTO pizzas(pizza_id,pizza_name,price) VALUES (3,"carnivore",13);
+INSERT INTO pizzas(pizza_id,pizza_name,price) VALUES (4,"vegetarienne",9);
+
+# INSERTING DATA FOR CLIENT TABLE
+INSERT INTO clients(client_id,firstname,lastname,mail,address,zipcode) VALUES (1,"thibault","rauyne","thibh@gmail.com","13 rue du sommelier",34000);
+INSERT INTO clients(client_id,firstname,lastname,mail,address,zipcode) VALUES (2,"damien","lopez","damien@gmail.com","12 rue de la cloche",78000);
+INSERT INTO clients(client_id,firstname,lastname,mail,address,zipcode) VALUES (3,"sarah","safin","sarah@gmail.com","13 rue saint privat",45000);
+INSERT INTO clients(client_id,firstname,lastname,mail,address,zipcode) VALUES (4,"julie","leclerc","julie@gmail.com","12 avenue de la marne",34160);
+
+# INSERTING DATA FOR ORDERBOY
+INSERT INTO orderboys(orderboy_id,firstname_boy,lastname_boy,mail_boy,vehicule) VALUES (1,"thomas","linod","thom@gmail.com","scooter1");
+INSERT INTO orderboys(orderboy_id,firstname_boy,lastname_boy,mail_boy,vehicule) VALUES (2,"Nicolas","Syla","nico@gmail.com","scooter2");
+INSERT INTO orderboys(orderboy_id,firstname_boy,lastname_boy,mail_boy,vehicule) VALUES (3,"Alex","Esteban","alex@gmail.com","scooter3");
+INSERT INTO orderboys(orderboy_id,firstname_boy,lastname_boy,mail_boy,vehicule) VALUES (4,"François","Puret","francois@gmail.com","scooter4");
+
+# INSERTING DATA FOR ORDERS
+
+INSERT INTO orders(order_id,total_price,clientClientId) VALUES (1,12.0,1);
+INSERT INTO orders(order_id,total_price,clientClientId) VALUES (2,12.0,2);
+INSERT INTO orders(order_id,total_price,clientClientId) VALUES (3,12.0,3);
+INSERT INTO orders(order_id,total_price,clientClientId) VALUES (4,12.0,4);
+

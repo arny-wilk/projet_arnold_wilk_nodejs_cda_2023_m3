@@ -1,0 +1,45 @@
+include head.pug
+include navbar.pug
+
+
+h3(class="main-content-h3") Votre liste des commandes
+button(class="main-content-btn")
+    a(href="/orders/list/add") Ajouter commande
+table(class="main-content-table")
+    tr
+        th Nom pizza
+        th Quantité Pizza
+            tr
+                td #{pizzaObj.pizza_name}
+                td #{pizzaOrder.pizza_quantity}
+
+table(class="main-content-btn")
+    tr
+        th Nom Boisson
+        th Quantité Boisson
+            tr
+                td #{drinksObj.drink_name}
+                td #{orderDrinks.drink_quantity}
+
+table(class="main-content-btn")
+    tr
+        th Nom Dessert
+        th Quantité
+            tr
+                td #{desserObj.dessert_name}
+                td #{orderDessert.dessert_quantity}
+
+table(class="main-content-btn")
+    tr
+        th Prenom Client
+        th Nom Client
+        th mail
+        th Adresse de livraison
+        th code postale
+        each obj in clientValues
+            tr
+                td #{obj.firstname}
+                td #{obj.lastname}
+                td #{obj.mail}
+                td #{obj.address}
+                td #{obj.zipcode}

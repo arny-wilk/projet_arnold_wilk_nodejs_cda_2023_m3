@@ -1,2 +1,22 @@
 include head.pug
 include navbar.pug
+
+h2 Nouvelle Commande
+form(action="/orders/list/add" method="POST")
+        label(for="/orders/list/add") Pizza
+        input(type="text" name="pizzaName")
+        label(for="/orders/list/add") Quantité
+        input(type="text" name="pizzaQuantity")
+        label(for="/orders/list/add") Boisson
+        input(type="text" name="drinkName")
+        label(for="/orders/list/add") Quantité Boisson
+        input(type="text" name="drinkQuantity")
+        label(for="/orders/list/add") Dessert
+        input(type="text" name="dessertQuantity")
+        label(for="/orders/list/") Prénom Client
+        input(type="text" name="clientFirstName")
+        label(for="/orders/list/") Nom Client 
+        input(type="text" name="clientLastName")
+        label(for="/orders/list/") Adresse de livraison
+        input(type="text" name="address")
+        input(type="submit" value="Valider la commande")

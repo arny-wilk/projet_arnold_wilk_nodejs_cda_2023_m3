@@ -19,8 +19,7 @@ let orderController = {
 };
 
 function addOrder(req, res) {
-  let orderId = req.params.id;
-  let {
+  const {
     pizzaName,
     pizzaQuantity,
     drinkName,
@@ -32,10 +31,10 @@ function addOrder(req, res) {
     address,
   } = req.body;
 
-  let pizza = pizzaCRUD.findAll({ where: { pizza_name: pizzaName } });
-  let drink = drinksCRUD.findAll({ where: { drink_name: drinkName } });
-  let dessert = dessertCRUD.findAll({ where: { dessert_name: dessertName } });
-  let client = clientCRUD.findAll({
+  const pizza = pizzaCRUD.findAll({ where: { pizza_name: pizzaName } });
+  const drink = drinksCRUD.findAll({ where: { drink_name: drinkName } });
+  const dessert = dessertCRUD.findAll({ where: { dessert_name: dessertName } });
+  const client = clientCRUD.findAll({
     where: {
       firstname: clientFirstname,
       lastname: clientLastname,
@@ -43,28 +42,30 @@ function addOrder(req, res) {
     },
   });
 
-  let order = {
+  const orderPizza = {};
+  const orderDrinks = {};
+  const orderDessert = {};
+
+  const order = {
     total_price:
       parseFloat(pizza.price) * parseFloat(pizzaQuantity) +
       parseFloat(drink.price) * parseFloat(drinkQuantity) +
       parseFloat(dessert.price) * parseFloat(dessertQuantity),
     clientClientId: client.clientId,
-  };
-
-  let orderPizza = {
-    quant_pizza: pizzaQuantity,
-    pizzaPizzaId: pizza.pizza_id,
-    orderOrderId: orderId,
-  };
-  let orderDrinks = {
-    quant_drinks: drinkQuantity,
-    drinkDrinksId: drink.drink_id,
-    orderOrderId: orderId,
-  };
-  let orderDessert = {
-    quant_dessert: dessertQuantity,
-    dessertDesserId: dessert.dessert_id,
-    orderOrderId: orderId,
+    include: [
+      {
+        association: orderPizza,
+        include: [pizzaQuantity, pizza.pizza_id],
+      },
+      {
+        association: orderDrinks,
+        include: [drinkQuantity, drink.drink_id_],
+      },
+      {
+        association: orderDessert,
+        include: [dessertQuantity, dessert.dessert_id_],
+      },
+    ],
   };
 
   orderDAO
@@ -76,32 +77,32 @@ function addOrder(req, res) {
       console.log(`Error message : `, err);
     });
 
-  orderPizzaDAO
-    .create(orderPizza)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      console.log(`Error message : `, err);
-    });
+  // orderPizzaDAO
+  //   .create(orderPizza)
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Error message : `, err);
+  //   });
 
-  orderDrinksDAO
-    .create(orderDrinks)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      console.log(`Error message : `, err);
-    });
+  // orderDrinksDAO
+  //   .create(orderDrinks)
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Error message : `, err);
+  //   });
 
-  orderDessertDAO
-    .create(orderDessert)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      console.log(`Error message : `);
-    });
+  // orderDessertDAO
+  //   .create(orderDessert)
+  //   .then((data) => {
+  //     res.send(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Error message : `);
+  //   });
 }
 
 function findOrderById(req, res) {

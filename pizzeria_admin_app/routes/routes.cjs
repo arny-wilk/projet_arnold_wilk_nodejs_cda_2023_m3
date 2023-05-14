@@ -258,18 +258,25 @@ router.get("/orders/list", async (req, res) => {
 router.get("/orders/list/add", (req, res) => {
   res.render("order");
 });
-router.post("/orders/list/add", addOrder, (req, res) => {});
+router.post("/orders/list/add", addOrder, (req, res) => {
+  res.redirect("/orders/list")
+});
 
-router.get("/orders/list/:id/details/:clientId");
-router.get("/orders/list/:id/details/:clientId/addBoy");
-router.post("/orders/list/:id/details/:clientId/addBoy");
+router.get("/orders/list/:id/details");
+
+router.get("/orders/list/:id/details/addBoy");
+router.post("/orders/list/:id/details/addBoy");
 
 router.get("/orders/list/:id/details/:clientId/:orderBoyId")
 
 router.get("/orders/list/:id/details/:clientId/");
 
 router.get("/orders/list/update/:id", (req, res) => {
-  res.render("orderUpdate");
+  const order = orderDAO.findById(req.params.id)
+  res.render("orderUpdate", {
+    valueTotalPrice: order.total_price,
+    valueClientId: order.clientClientId,
+});
 });
 router.post("/orders/list/update/:id");
 
